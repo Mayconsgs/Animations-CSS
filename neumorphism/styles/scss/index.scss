@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #edf1f4; // edf1f4
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+
+  .loader {
+    display: flex;
+    flex-direction: row;
+
+    div {
+      $width: 40px;
+      position: relative;
+      width: $width;
+      height: 200px;
+      margin: 20px;
+      border-radius: $width / 2;
+      border: 2px solid #edf1f4;
+      overflow: hidden;
+      background: linear-gradient(
+        to bottom,
+        rgba($color: black, $alpha: 0.05),
+        #edf1f4
+      );
+
+      box-shadow: 15px 15px 20px rgba($color: black, $alpha: 0.1),
+        -15px -15px 20px white,
+        inset -5px -5px 5px rgba($color: white, $alpha: 0.5),
+        inset 5px 5px 5px rgba($color: black, $alpha: 0.05);
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        border-radius: $width / 2;
+        z-index: 10;
+
+        box-shadow: 15px 15px 20px rgba($color: black, $alpha: 0.1),
+          -15px -15px 20px white,
+          inset -5px -5px 5px rgba($color: white, $alpha: 0.5),
+          inset 5px 5px 5px rgba($color: black, $alpha: 0.05);
+      }
+
+      &::after {
+        $animation: unique-id();
+
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: $width - 4px;
+        height: $width - 4px;
+
+        border-radius: 50%;
+        background-color: white;
+        box-shadow: inset -5px -5px 5px rgba($color: black, $alpha: 0.2),
+          0 420px 0 400px #2196f3;
+
+        animation: $animation 2.5s ease-in-out infinite;
+        animation-delay: calc(-0.5s * var(--i));
+
+        @keyframes #{$animation} {
+          0% {
+            transform: translateY(160px);
+            filter: hue-rotate(0deg);
+          }
+
+          50% {
+            transform: translateY(0px);
+          }
+
+          100% {
+            transform: translateY(160px);
+            filter: hue-rotate(180deg);
+          }
+        }
+      }
+    }
+  }
+}
