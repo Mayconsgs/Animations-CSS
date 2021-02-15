@@ -1,0 +1,38 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+body .switch {
+  position: relative;
+}
+body .switch > input[type=checkbox] {
+  display: none;
+}
+body .switch > input[type=checkbox]:checked ~ label {
+  background-color: green;
+}
+body .switch > input[type=checkbox]:checked ~ label + label {
+  background-color: white;
+  transform: translateX(24px);
+}
+body .switch > label {
+  width: 50px;
+  height: 26px;
+  background-color: grey;
+  position: absolute;
+  border-radius: 13px;
+  transition: 0.2s all;
+  left: 0;
+}
+body .switch > label + label {
+  height: 22px;
+  width: 22px;
+  border-radius: 50%;
+  background-color: white;
+  margin: 2px;
+  box-shadow: inset -5px -5px 5px rgba(0, 0, 0, 0.2);
+}
+
+/*# sourceMappingURL=index.css.map */
